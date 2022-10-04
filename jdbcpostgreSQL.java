@@ -14,6 +14,19 @@ public class jdbcpostgreSQL {
   //Mac/Linux: java -cp ".:postgresql-42.2.8.jar" jdbcpostgreSQL
 
   //MAKE SURE YOU ARE ON VPN or TAMU WIFI TO ACCESS DATABASE
+  public static String createInventory(String inventory) {
+    inventory = "CREATE TABLE itemInventory(InventoryId SERIAL PRIMARY KEY, Quantity int);";
+    int max = 300;
+    int min = 50;
+    int range = max - min + 1;
+    for (int i = 1; i <= 47; i++) {
+      int randQuant = (int)(Math.random() * range) + min;
+      inventory = inventory +  "INSERT INTO itemInventory (Quantity) VALUES(" + randQuant + ");";
+    }
+    System.out.println(inventory);
+    return inventory;
+  }
+
   public static void main(String args[]) {
 
     //Building the connection with your credentials
@@ -41,12 +54,14 @@ public class jdbcpostgreSQL {
 
        //Running a query
        //TODO: update the sql command here
-       String sqlStatement = 
-      //  "select * from TeamMembers";
+
+       String inventory = "";
+       inventory = createInventory(inventory);
+       String sqlStatement = inventory;
+       //  "select * from TeamMembers";
        
-       "CREATE TABLE TeamMebers (Id int, Name varchar(255), Height int);" +
+       //"CREATE TABLE testingAgain (Id int, Name varchar(255), Height int);";
        
-       "INSERT INTO TeamMembers (Id, Name, Height) VALUES(3, 'Tom', 66)";
 
        //send statement to DBMS
        //This executeQuery command is useful for data retrieval
