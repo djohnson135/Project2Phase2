@@ -41,12 +41,7 @@ public class jdbcpostgreSQL {
 
        //Running a query
        //TODO: update the sql command here
-       String sqlStatement = 
-      //  "select * from TeamMembers";
-       
-       "CREATE TABLE TeamMebers (Id int, Name varchar(255), Height int);" +
-       
-       "INSERT INTO TeamMembers (Id, Name, Height) VALUES(3, 'Tom', 66)";
+       String sqlStatement = InsertQuery.populateOrders() + insertInventory.createInventory() + insertItemsTable.populateItems() + createManager.createManagers() + createManager.createServers();
 
        //send statement to DBMS
        //This executeQuery command is useful for data retrieval

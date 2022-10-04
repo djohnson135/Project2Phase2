@@ -1,6 +1,6 @@
 public class insertInventory {
-    public static String createInventory(String inventory) {
-        inventory = "CREATE TABLE itemInventory(InventoryId SERIAL PRIMARY KEY, Quantity int);";
+    public static String createInventory() {
+        String inventory = "CREATE TABLE itemInventory(InventoryId SERIAL PRIMARY KEY, Quantity int);";
         int max = 300;
         int min = 50;
         int range = max - min + 1;
