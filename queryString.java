@@ -1,5 +1,5 @@
 public class queryString {
-    public static String qString() {
+    public static String[] qString() {
         //1. count the number of items
         //2. count the number of orders
         //3. max order price
@@ -18,23 +18,23 @@ public class queryString {
         //16. sum for all the saturdays
         //17. sum for all the sundays
 
-        String stringOfQueries = "SELECT COUNT(itemid) FROM items;" + 
-                                 "SELECT COUNT(orderid) FROM orders;" +
-                                 "SELECT MAX(price) FROM orders;" +
-                                 "SELECT MIN(price) FROM orders;" +
-                                 "SELECT AVG(price) FROM orders;" +
-                                 "SELECT MAX(price) FROM items;" +
-                                 "SELECT MIN(price) FROM items;" +
-                                 "SELECT AVG(price) FROM items;" +
-                                 "SELECT AVG(amount) FROM items;" +
-                                 "SELECT MAX(amount) FROM items;" +
-                                 "SELECT MIN(amount) FROM items;" +
-                                 "SELECT MAX(Quantity) FROM inventory;" +
-                                 "SELECT MIN(Quantity) FROM inventory;" +
-                                 "SELECT AVG(Quantity) FROM inventory;" +
-                                 "SELECT SUM(price) FROM orders;" +
-                                 "SELECT SUM(price) FROM orders WHERE orderday = 'Saturday';" + 
-                                 "SELECT SUM(price) FROM orders WHERE orderday = 'Monday';";
+        String[] stringOfQueries = {"SELECT COUNT(itemid) FROM items;", 
+                                 "SELECT COUNT(orderid) FROM orders;",
+                                 "SELECT MAX(price) FROM orders;",
+                                 "SELECT MIN(price) FROM orders;",
+                                 "SELECT AVG(price) FROM orders;",
+                                 "SELECT MAX(price) FROM items;",
+                                 "SELECT MIN(price) FROM items;",
+                                 "SELECT AVG(price) FROM items;",
+                                 "SELECT AVG(amount) FROM items;",
+                                 "SELECT MAX(amount) FROM items;",
+                                 "SELECT MIN(amount) FROM items;",
+                                 "SELECT MAX(Quantity) FROM inventory;",
+                                 "SELECT MIN(Quantity) FROM inventory;",
+                                 "SELECT AVG(Quantity) FROM inventory;",
+                                 "SELECT SUM(price) FROM orders;",
+                                 "SELECT SUM(price) FROM orders WHERE orderday = 'Saturday';", 
+                                 "SELECT SUM(price) FROM orders WHERE orderday = 'Monday';"};
                             
         return stringOfQueries;
       }

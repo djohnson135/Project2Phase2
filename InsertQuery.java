@@ -22,8 +22,8 @@ public final class InsertQuery{
     float order = 0;
     for (int i=0; i < 1000; i++){
       String Day = days.get(random_method.nextInt(days.size())); 
-      if (Day == "Saturday" || Day == "Friday") order = (float) (random_method.nextFloat(35.00f));
-      else order = (float) (random_method.nextFloat(15.00f));
+      if (Day == "Saturday" || Day == "Friday") order = (float) (random_method.nextFloat() * 35.00f);
+      else order = (float) (random_method.nextFloat() * 15.00f);
       insertQuery += " INSERT INTO Orders (firstName, lastName, price, orderDay) VALUES ('" 
       + dict.names.get(random_method.nextInt(dict.names.size()))
       + "', '" + dict.names.get(random_method.nextInt(dict.names.size()))
