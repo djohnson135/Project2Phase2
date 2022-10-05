@@ -19,15 +19,31 @@ public final class InsertQuery{
     String createTableQuery = "CREATE TABLE Orders (orderID SERIAL PRIMARY KEY, firstName varchar(25), lastName varchar(25), price float, orderDay varchar(25));";
     // String primaryKey = "ALTER TABLE Orders ADD COLUMN orderID SERIAL PRIMARY KEY";
     String insertQuery = "";
+    float totalOrder = 0;
     float order = 0;
-    for (int i=0; i < 1000; i++){
-      String Day = days.get(random_method.nextInt(days.size())); 
-      if (Day == "Saturday" || Day == "Friday") order = (float) (random_method.nextFloat() * 35.00f);
-      else order = (float) (random_method.nextFloat() * 15.00f);
-      insertQuery += " INSERT INTO Orders (firstName, lastName, price, orderDay) VALUES ('" 
-      + dict.names.get(random_method.nextInt(dict.names.size()))
-      + "', '" + dict.names.get(random_method.nextInt(dict.names.size()))
-      + "'," +  String.valueOf(order) + " ,'" + days.get(random_method.nextInt(days.size())) +"' );";
+    for (int i=0; i < 24; i++){
+      String Day = days.get(i %6);
+      if (Day == "Saturday" || Day == "Friday"){
+        while (totalOrder < 5000){
+          order = (float) (random_method.nextFloat() * 35.00f);
+          totalOrder += order;
+          insertQuery += " INSERT INTO Orders (firstName, lastName, price, orderDay) VALUES ('" 
+          + dict.names.get(random_method.nextInt(dict.names.size()))
+          + "', '" + dict.names.get(random_method.nextInt(dict.names.size()))
+          + "'," +  String.valueOf(order) + " ,'" + Day +"' );";
+        }
+      }else{
+        while (totalOrder <3000){
+          order = (float) (random_method.nextFloat() * 35.00f);
+          totalOrder += order;
+          insertQuery += " INSERT INTO Orders (firstName, lastName, price, orderDay) VALUES ('" 
+          + dict.names.get(random_method.nextInt(dict.names.size()))
+          + "', '" + dict.names.get(random_method.nextInt(dict.names.size()))
+          + "'," +  String.valueOf(order) + " ,'" + Day +"' );";
+        }
+      }
+      totalOrder = 0;
+      
     }
     
     // System.out.println(createTableQuery + insert);
