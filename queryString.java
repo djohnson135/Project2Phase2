@@ -29,12 +29,12 @@ public class queryString {
                                  "SELECT AVG(amount) FROM items;" +
                                  "SELECT MAX(amount) FROM items;" +
                                  "SELECT MIN(amount) FROM items;" +
-                                 "SELECT MAX(quantity) FROM inventory;" +
-                                 "SELECT MIN(quantity) FROM inventory;" +
-                                 "SELECT AVG(quantity) FROM inventory;" +
-                                 "SELECT SUM(quantity) FROM orders;" +
-                                 "SELECT SUM(quantity) FROM orders WHERE orderday = 'Saturday';" + 
-                                 "SELECT SUM(quantity) FROM orders WHERE orderday = 'Sunday';";
+                                 "SELECT MAX(Quantity) FROM inventory;" +
+                                 "SELECT MIN(Quantity) FROM inventory;" +
+                                 "SELECT AVG(Quantity) FROM inventory;" +
+                                 "SELECT SUM(price) FROM orders;" +
+                                 "SELECT SUM(price) FROM orders WHERE orderday = 'Saturday';" + 
+                                 "SELECT SUM(price) FROM orders WHERE orderday = 'Monday';";
                             
         return stringOfQueries;
       }
