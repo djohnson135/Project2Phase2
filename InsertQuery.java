@@ -20,14 +20,14 @@ public final class InsertQuery{
     // String primaryKey = "ALTER TABLE Orders ADD COLUMN orderID SERIAL PRIMARY KEY";
     String insertQuery = "";
     float order = 0;
-    for (int i=0; i < 500; i++){
+    for (int i=0; i < 1000; i++){
       String Day = days.get(random_method.nextInt(days.size())); 
-      if (Day == "Saturday" || Day == "Friday") order = (float) (random_method.nextFloat(20.00f) *1.3);
-      else order = (float) (random_method.nextFloat(20.00f));
+      if (Day == "Saturday" || Day == "Friday") order = (float) (random_method.nextFloat(35.00f));
+      else order = (float) (random_method.nextFloat(15.00f));
       insertQuery += " INSERT INTO Orders (firstName, lastName, price, orderDay) VALUES ('" 
       + dict.names.get(random_method.nextInt(dict.names.size()))
       + "', '" + dict.names.get(random_method.nextInt(dict.names.size()))
-      + "', 90.00, '" + days.get(random_method.nextInt(days.size())) +"' );";
+      + "'," +  String.valueOf(order) + " ,'" + days.get(random_method.nextInt(days.size())) +"' );";
     }
     
     // System.out.println(createTableQuery + insert);
