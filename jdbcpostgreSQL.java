@@ -44,14 +44,15 @@ public class jdbcpostgreSQL {
       
       String[] query = queryString.qString();
       
-      //drop dependencies
-      stmt.executeUpdate("drop table if exists orders;");
-
-      stmt.executeUpdate("drop table if exists item;" + Item.populateItems());
-      stmt.executeUpdate("drop table if exists inventory;" +Inventory.createInventory());
-      stmt.executeUpdate("drop table if exists manager;" + ManagerServer.createManagers());
-      stmt.executeUpdate("drop table if exists server;" +ManagerServer.createServers());
-      Order.populateOrders();
+      //UNCOMMENT THE CODE BELOW TO REBUILD DATABASE NOT ADVISED
+      //------------------------------------------------------------------------------------------------
+      // stmt.executeUpdate("drop table if exists orders;");
+      // stmt.executeUpdate("drop table if exists item;" + Item.populateItems());
+      // stmt.executeUpdate("drop table if exists inventory;" +Inventory.createInventory());
+      // stmt.executeUpdate("drop table if exists manager;" + ManagerServer.createManagers());
+      // stmt.executeUpdate("drop table if exists server;" +ManagerServer.createServers());
+      // Order.populateOrders();
+      //------------------------------------------------------------------------------------------------
       
       for (int i = 0; i < query.length; i++) {
         ResultSet result = stmt.executeQuery(query[i]);
