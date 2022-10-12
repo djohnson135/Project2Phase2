@@ -42,15 +42,19 @@ public class jdbcpostgreSQL {
        //Running a query
        //TODO: update the sql command here
       
-      String[] sqlStatement = queryString.qString();
-      //  String sqlStatement = InsertQuery.populateOrders() + insertInventory.createInventory() + insertItemsTable.populateItems() + createManager.createManagers() + createManager.createServers();
-      for (int i = 0; i < sqlStatement.length; i++) {
-        //send statement to DBMS
-        //This executeQuery command is useful for data retrieval
-        ResultSet result = stmt.executeQuery(sqlStatement[i]);
-        //OR
-        //This executeUpdate command is useful for updating data
-        //int result = stmt.executeUpdate(sqlStatement);
+      String[] query = queryString.qString();
+      
+      //drop dependencies
+      stmt.executeUpdate("drop table if exists orders;");
+
+      stmt.executeUpdate("drop table if exists item;" + Item.populateItems());
+      stmt.executeUpdate("drop table if exists inventory;" +Inventory.createInventory());
+      stmt.executeUpdate("drop table if exists manager;" + ManagerServer.createManagers());
+      stmt.executeUpdate("drop table if exists server;" +ManagerServer.createServers());
+      Order.populateOrders();
+      
+      for (int i = 0; i < query.length; i++) {
+        ResultSet result = stmt.executeQuery(query[i]);
 
         //OUTPUT
         //You will need to output the results differently depeninding on which function you use
@@ -59,8 +63,9 @@ public class jdbcpostgreSQL {
           System.out.println(result.getString(1));
         }
         //OR
-        System.out.println(result);
+        // System.out.println(result);
       }
+
    } catch (Exception e){
        e.printStackTrace();
        System.err.println(e.getClass().getName()+": "+e.getMessage());
